@@ -25,6 +25,6 @@ def DZDP_Analyes(path):
 
             # 数据库插入
             text = '\n'.join(text_list)
-            doris.cursor(f"INSERT INTO test.nnzy_commentdata_analyes VALUES ('{time}', '{user_id}', '{text}', "
+            doris.cursor(f"INSERT INTO test.nnzy_commentdata_analyes VALUES ('{time}', '{user_id}', '{text}', '大众点评', "
                          f"'南宁之夜', '{analsyResults}', '{emotion}')")
             text_list.clear()

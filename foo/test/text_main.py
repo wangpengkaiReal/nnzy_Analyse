@@ -1,4 +1,4 @@
-from foo import Analyes
+from foo import yjygx_Analyes
 from tool import doris
 
 
