@@ -12,18 +12,19 @@ def DZDP_Analyes(path):
         json_data = tool.readFile(ropen)['reviewInfo']['reviewListInfo']['reviewList']
         for data in json_data:
             # 评论时间
-            Time = data['addTime'].replace('T', ' ').replace('Z', '').replace('.000', '')
-            print(Time)
+            time = data['addTime'].replace('T', ' ').replace('Z', '').replace('.000', '')
 
-            # 获取评论文本
+            # 用户ID
+            user_id = data['userId']
+
+            # 获取评论文本,及文本情感分析
             for test in data['reviewBody']['children'][0]['children']:
                 if test.get('text') is not None:
                     text_list.append(test.get('text'))
             analsyResults, emotion = tool.Results('\n'.join(text_list))
-            print(analsyResults)
-            print(emotion)
-            exit()
+
+            # 数据库插入
+            text = '\n'.join(text_list)
+            doris.cursor(f"INSERT INTO test.nnzy_commentdata_analyes VALUES ('{time}', '{user_id}', '{text}', "
+                         f"'南宁之夜', '{analsyResults}', '{emotion}')")
             text_list.clear()
-            print(text_list)
-            break
-        break

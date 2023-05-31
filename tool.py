@@ -46,10 +46,10 @@ class Doris:
     # 连接数据库和创建游标
     def __init__(self):
         self.conn = mysql.connector.connect(
-            host="124.71.112.110",
+            host="",
             port=9030,
-            user="admin",
-            passwd="lfkj123",
+            user="",
+            passwd="",
             db="test",
             charset="utf8",
             autocommit=True,
