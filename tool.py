@@ -1,16 +1,15 @@
 import json
 import os
-
 import jieba
-import pymysql
 import mysql.connector
 from typing import Tuple, List
-
 from snownlp import SnowNLP
 
 
-def eachFile(path):
+# 获取文件路径
+def eachFile(path: str) -> list:
     child = []
+    # 获取路径下的全部文件名
     pathDir = os.listdir(path)
     for allDir in pathDir:
         child.append(os.path.join('%s/%s' % (path, allDir)))
@@ -18,14 +17,14 @@ def eachFile(path):
 
 
 # 读取文件内容
-def readFile(path):
+def readFile(path: str) -> json:
     fopen = open(path, 'r', encoding='utf8')  # r 代表read
     json_data = json.load(fopen)
     return json_data
 
 
 # 文本情感分析
-def Results(content_data):
+def Results(content_data: str) -> str and float:
     # 对文本分词
     incise_text = jieba.cut(content_data)
     emotion = SnowNLP(" ".join(incise_text)).sentiments

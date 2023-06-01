@@ -1,11 +1,10 @@
 import datetime
-import jieba
 import pandas as pd
 import tool
 from tool import doris
-from snownlp import SnowNLP
 
 
+# 一键游广西,情感分析及数据库写入
 def Data_Analyse(path):
     path_list = tool.eachFile(path)
     # 清空表中的数据
@@ -34,7 +33,7 @@ def Dataf():
     return df
 
 
-# 数据写入
+# 数据写入dataframe
 def input_data(df, otherStyleTime, uid, content, ctitle, analsyResults, emotion):
     df = df.append({
         'updataTime': otherStyleTime,

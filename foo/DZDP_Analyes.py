@@ -1,8 +1,5 @@
-import datetime
-import pandas as pd
 import tool
 from tool import doris
-from snownlp import SnowNLP
 
 
 def DZDP_Analyes(path):

@@ -29,6 +29,7 @@ def keyword(df: pandas.DataFrame) -> list:
     return nnzy_keyword
 
 
+# 关键词云图
 def word_cloud(kword: list):
     stopwords = {'还有', '有点', '没有', '不会', '小时'}  # 去掉不需要显示的词
     # 词云设置,msyh.ttc电脑本地字体,可以写成绝对路径
